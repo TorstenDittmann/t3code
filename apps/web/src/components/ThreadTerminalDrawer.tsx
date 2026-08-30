@@ -789,8 +789,6 @@ export function TerminalViewport({
       }
 
       function handleData(data: string): void {
-        const activeTerminal = terminalRef.current;
-        if (activeTerminal && !activeTerminal.isAtBottom()) activeTerminal.scrollToBottom();
         void (async () => {
           const result = await writeTerminal(data);
           if (result._tag === "Success" || isAtomCommandInterrupted(result)) return;
